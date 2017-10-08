@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -118,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Js\GISMap.js" />
     <Content Include="Js\layui\css\layui.css" />
     <Content Include="Js\layui\css\layui.mobile.css" />
     <Content Include="Js\layui\css\modules\code.css" />
@@ -239,6 +241,7 @@
     <Content Include="Js\layui\font\iconfont.eot" />
     <Content Include="Js\layui\font\iconfont.ttf" />
     <Content Include="Js\layui\font\iconfont.woff" />
+    <Content Include="Views\Home\IndexGIS.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

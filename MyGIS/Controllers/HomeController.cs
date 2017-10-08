@@ -13,5 +13,12 @@ namespace MyGIS.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// GIS页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult IndexGIS() {
+            return View();
+        }
     }
 }
