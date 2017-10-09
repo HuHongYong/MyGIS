@@ -118,6 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GISIndex.html" />
     <Content Include="Global.asax" />
     <Content Include="Js\GISMap.js" />
     <Content Include="Js\layui\css\layui.css" />
@@ -252,6 +253,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="proxy\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

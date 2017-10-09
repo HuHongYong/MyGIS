@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+    <title>esri Deom</title>
+    <link rel="stylesheet" href="http://127.0.0.1/arcgis_js_api/library/3.16/3.16/dijit/themes/claro/claro.css" />
+    <link rel="stylesheet" href="http://127.0.0.1/arcgis_js_api/library/3.16/3.16/esri/css/esri.css" />
+    <style>
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        #BasemapToggle {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            z-index: 50;
+        }
+
+        #HomeButton {
+            left: 25px;
+            position: absolute;
+            top: 93px;
+            z-index: 50;
+        }
+
+        #LocateButton {
+            left: 25px;
+            position: absolute;
+            top: 130px;
+            z-index: 50;
+        }
+    </style>
+    <script src="http://127.0.0.1/arcgis_js_api/library/3.16/3.16/init.js"></script>
+    <script src="Js/GISMap.js"></script>
+    <script>    
+    </script>
+
+</head>
+<body class="claro">
+    <div id="map" data-dojo-type="dijit/layout/ContentPane"
+         data-dojo-props="region:'center'"
+         style="padding:0">
+        <!--  返回初始化地图按钮-->
+        <div id="HomeButton"></div>
+        <!--  Html5定位按钮-->
+        <div id="LocateButton"></div>
+        <!--  切换底图-->
+        <div id="BasemapToggle"></div>
+    </div>
+</body>
+</html>
