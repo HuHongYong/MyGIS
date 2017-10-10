@@ -47,18 +47,18 @@
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <ul class="layui-nav layui-nav-tree" lay-filter="test">
                     <li class="layui-nav-item layui-nav-itemed">
-                        <a class="" href="javascript:;">所有商品</a>
+                        <a class="" href="javascript:;">图形绘制</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">列表一</a></dd>
-                            <dd><a href="javascript:;">列表二</a></dd>
-                            <dd><a href="javascript:;">列表三</a></dd>
-                            <dd><a href="">超链接</a></dd>
+                            <dd><a href="javascript:;" >点</a></dd>
+                            <dd><a href="javascript:;" onclick="drawActive()">线</a></dd>
+                            <dd><a href="javascript:;">面</a></dd>
+                            <dd><a href="">圆</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;">解决方案</a>
+                        <a href="javascript:;">图层管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">列表一</a></dd>
+                            <dd><a href="javascript:;" onclick="layerControl()">图层控制</a></dd>
                             <dd><a href="javascript:;">列表二</a></dd>
                             <dd><a href="">超链接</a></dd>
                         </dl>
@@ -79,6 +79,8 @@
             <!-- 底部固定区域 -->
             © dview.cn
         </div>
+        <div id="divWinMain"></div>
+        <div id="divLayControl"></div>
     </div>
     <script src="http://127.0.0.1/arcgis_js_api/library/3.16/3.16/init.js"></script>
     <script src="~/Js/layui/layui.js"></script>
@@ -87,7 +89,6 @@
 //JavaScript代码区域
 layui.use('element', function(){
   var element = layui.element;
-
 });
     </script>
 </body>

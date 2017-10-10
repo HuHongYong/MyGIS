@@ -1,0 +1,16 @@
+﻿
+        #HomeButton {
+            left: 20px;
+            position: absolute;
+            top: 93px;
+            z-index: 50;
+        }
+
+        #LocateButton {
+            left: 20px;
+            position: absolute;
+            top: 130px;
+            z-index: 50;
+        }
+       #divLayControl {
+     }
