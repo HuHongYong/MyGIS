@@ -6,6 +6,7 @@
     <title>layout 后台大布局 - Layui</title>
     <link rel="stylesheet" href="http://127.0.0.1/arcgis_js_api/library/3.16/3.16/dijit/themes/claro/claro.css" />
     <link rel="stylesheet" href="http://127.0.0.1/arcgis_js_api/library/3.16/3.16/esri/css/esri.css" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link href="~/Js/layui/css/layui.css" rel="stylesheet" />
     <link href="~/Css/main.css" rel="stylesheet" />
 </head>
@@ -74,14 +75,18 @@
             <div id="HomeButton"></div>
             <!--  Html5定位按钮-->
             <div id="LocateButton"></div>
+            <div id="divLayControl">
+                <ul class="list-group" id="layerul">
+                </ul>
+            </div>
         </div>
         <div class="layui-footer">
             <!-- 底部固定区域 -->
             © dview.cn
         </div>
         <div id="divWinMain"></div>
-        <div id="divLayControl"></div>
     </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://127.0.0.1/arcgis_js_api/library/3.16/3.16/init.js"></script>
     <script src="~/Js/layui/layui.js"></script>
     <script src="~/Js/GISMap.js"></script>

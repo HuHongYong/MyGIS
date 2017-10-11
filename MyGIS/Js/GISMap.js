@@ -9,15 +9,22 @@ dojo.require("esri.symbols.SimpleLineSymbol");
 dojo.require("esri.geometry.Point");
 dojo.require("esri.SpatialReference");
 //---------------------------------------------------------------全局变量------------------------------------------------------------------
-var map, baseServiceUrl, legend, drawToolbar, GeometryServices;
+//var map地图主对象, baseServiceUrl底图服务, legend图例, drawToolbar绘图·工具, GeometryServices几何服务,mapServiceUrl地图服务;
+var map, baseServiceUrl, legend, drawToolbar, GeometryServices,mapServiceUrl;
 var legendLayers = [];
 var arrLayers;
 var loadMap = function () {
-    map = new esri.Map("map", { nav: false, logo: false });
+    map = new esri.Map("map", {
+        nav: false, logo: false, center: [114.93896484, 25.85428033],
+        zoom: 10
+    });
     baseServiceUrl = "http://cache1.arcgisonline.cn/arcgis/rest/services/ChinaOnlineCommunity/MapServer";
     GeometryServices = new esri.tasks.GeometryService("http://localhost:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
+    mapServiceUrl = "http://localhost:6080/arcgis/rest/services/FindChild/MapServer";
+    var mapService = new esri.layers.ArcGISDynamicMapServiceLayer(mapServiceUrl, { id: "失踪儿童数据库" });
     var titleLayer = new esri.layers.ArcGISTiledMapServiceLayer(baseServiceUrl);
     map.addLayer(titleLayer);
+    map.addLayers([mapService]);
     map.on("layer-add-result", initBaseTool);
 }
 //工具初始化
@@ -51,6 +58,8 @@ var initBaseTool = function () {
     overviewMapDijit.startup();
     //比例尺
     var scalebar = new esri.dijit.Scalebar({ map: map, attachTo: "bottom-left", scalebarUnit: 'metric' });
+    //初始化图层控制
+  onInitLayerList("失踪儿童数据库");
 }
 var showLegend = function () {
     if (legend != undefined && legend != null) {
@@ -99,3 +108,53 @@ var closeDrawToolbar = function () {
         drawToolbar.deactivate();
     }
 }
+//----------------------------------------------------------图层控制-----------------------------------------------------------------------
+var onInitLayerList = function (id) {
+    var layer = map.getLayer(id);
+    var layerinfos = layer.layerInfos;
+    $("#layerul").append("<li class='list-group-item'>" + id + "</li>");
+    if (layerinfos != null && layerinfos.length > 0) {
+        for (var i = 0; i < layerinfos.length; i++) {
+            $("#layerul").append("<li class='list-group-item'><input type='checkbox' checked id='" + layerinfos[i].id+ "' onChange='changeOpacity()'>" + layerinfos[i].name + "</li>");
+        }
+    }
+}
+var changeOpacity = function () {
+    var visible = [];
+    $("#layerul input[type=checkbox]").each(function () {
+        var thisnum = this;
+        if (thisnum.checked==true) {
+            visible.push(thisnum.id);
+        }
+    });
+    var layer = map.getLayer("失踪儿童数据库");
+    layer.setVisibleLayers(visible);
+}
+
+////*******************************************功能： 添加可操作图层***************************************************
+//var onAddFeatureLayer = function () {
+//    var isSuccess = false;
+//    var mapServiceUrl = IHapGIS.fn.mapServiceUrl;
+//    var arrLayers = new Array();
+//    var layers = IHapGIS.fn.getLayerInfos();
+//    // var map = IHapGIS.fn.getMap();
+//    for (var iNum = 0; iNum < layers.length; iNum++) {
+//        var layerJson = layers[iNum].toJson();
+//        arrLayers.push(layerJson);
+//        var layerUrl = mapServiceUrl.replace('MapServer', 'FeatureServer') + '/' + layerJson.id;
+//        var featureLayer = new esri.layers.FeatureLayer(layerUrl,
+//            {
+//                mode: esri.layers.FeatureLayer.MODE_ONDEMAND,
+//                outFields: ["*"],
+//                visible: false,
+//                opacity: 1,
+//                id: 'lyr' + layerJson.id
+//            }
+//        );
+//        IHapGIS.fn.map.addLayer(featureLayer);
+//        isSuccess = true;
+//    }
+//    IHapGIS.fn.arrLayers = arrLayers;
+//    return isSuccess;
+
+//}
